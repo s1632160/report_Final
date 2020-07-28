@@ -4,7 +4,6 @@
         <meta charset="utf-8">
         <title>CG1</title>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
-        <script src="js/controls/OrbitControls.js"></script>
     </head>
 
     <body>
@@ -26,8 +25,6 @@
 
                 var camera = new THREE.PerspectiveCamera(45,960/540);
                 camera.position.set(0, 0, 1000);
-                const controls = new THREE.OrbitControls(camera);
-                controls.autoRotate = true;
                 
                 //地球
                 const sphereGeometry = new THREE.SphereGeometry( 150, 32, 32 ); 
