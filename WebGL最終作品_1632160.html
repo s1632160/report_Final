@@ -10,11 +10,13 @@
     <body>
         <script>
             var init = function(){
-
+                
+                const width = 960
+                const height = 540
                 var renderer = new THREE.WebGLRenderer({
                     canvas: document.querySelector('#myCanvas')
                 });
-                renderer.setSize(960,540);
+                renderer.setSize(width,height);
                 document.body.appendChild(renderer.domElement);
 
                 var scene = new THREE.Scene();
