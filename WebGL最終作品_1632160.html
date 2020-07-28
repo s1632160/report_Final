@@ -18,13 +18,12 @@
                     canvas: document.querySelector('#myCanvas')
                 });
                 renderer.setSize(width,height);
-                document.body.appendChild(renderer.domElement);
 
                 var scene = new THREE.Scene();
                 //フォグ
                 scene.fog = new THREE.Fog(0x000000, 800, 2000);
 
-                var camera = new THREE.PerspectiveCamera(45,960/540);
+                var camera = new THREE.PerspectiveCamera(45,width/height);
                 camera.position.set(0, 0, 1000);
                 const controls = new THREE.OrbitControls(camera);
                 controls.autoRotate = true;
@@ -65,7 +64,7 @@
                 
                 tick();
 
-                var update = function(){
+                function tick(){
                     group.rotateY(0.01);
                     renderer.render(scene, camera);
                     requestAnimationFrame(tick);
