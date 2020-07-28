@@ -12,9 +12,11 @@
             window.addEventListener('load', init);
             function init(){
                 
-                const width = 960
-                const height = 540
-                const renderer = new THREE.WebGLRenderer();
+                const width = 960;
+                const height = 540;
+                const renderer = new THREE.WebGLRenderer({
+                    canvas: document.querySelector('#myCanvas')
+                });
                 renderer.setSize(width,height);
 
                 const scene = new THREE.Scene();
