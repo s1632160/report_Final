@@ -42,7 +42,7 @@
                 const geometry = new THREE.BoxGeometry(50, 50, 50);
                 const material = new THREE.MeshStandardMaterial({color: 0xff0000});
 
-                for (let i = 0; i < 500; i++) {
+                for (let i = 0; i < 200; i++) {
                     const mesh = new THREE.Mesh(geometry, material);
                     mesh.position.x = (Math.random() - 0.5) * 2000;
                     mesh.position.y = (Math.random() - 0.5) * 2000;
@@ -60,6 +60,8 @@
                 var Light = new THREE.DirectionalLight(0xffffff,0.5);
                 Light.position.set(1000, 1000, 700);
                 scene.add(Light);
+                
+                tick();
 
                 var update = function(){
                     group.rotateY(0.01);
