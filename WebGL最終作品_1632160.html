@@ -64,8 +64,8 @@
                 tick();
 
                 function tick(){
-                    sphere.rotateY(0.01);
                     group.rotateY(0.01);
+                    sphere.rotateY(0.01);
                     renderer.render(scene, camera);
                     requestAnimationFrame(tick);
                 }
