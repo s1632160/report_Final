@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>CG1</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/99/three.min.js"></script>
+        <script src="OrbitControls.js"></script>
+    </head>
+
+    <body>
+        <script>
+            var init = function(){
+
+                var renderer = new THREE.WebGLRenderer({
+                    canvas: document.querySelector('#myCanvas')
+                });
+                renderer.setSize(960,540);
+                document.body.appendChild(renderer.domElement);
+
+                var scene = new THREE.Scene();
+                //フォグは白で
+                scene.fog = new THREE.Fog(0xf9f9f9, 800, 2000);
+
+                var camera = new THREE.PerspectiveCamera(45,960/540);
+                camera.position.set(0, 0, 1000);
+                const controls = new THREE.OrbitControls(camera);
+                controls.autoRotate = true;
+                
+                //地球
+                const sphereGeometry = new THREE.SphereGeometry( 150, 32, 32 ); 
+                const textureLoader = new THREE.TextureLoader();
+                const erathtexture = textureLoader.load("earth.png");
+                const sphereMaterial = new THREE. MeshPhongMaterial();
+                sphereMaterial.map = erathtexture;
+                const sphere = new THREE.Mesh( sphereGeometry, sphereMaterial );
+                scene.add(sphere);
+                
+                //赤い四角
+                const group = new THREE.Group();
+                scene.add(group);
+                const geometry = new THREE.BoxGeometry(50, 50, 50);
+                const material = new THREE.MeshStandardMaterial({color: 0xff0000});
+
+                for (let i = 0; i < 1000; i++) {
+                    const mesh = new THREE.Mesh(geometry, material);
+                    mesh.position.x = (Math.random() - 0.5) * 2000-150;
+                    mesh.position.y = (Math.random() - 0.5) * 2000-150;
+                    mesh.position.z = (Math.random() - 0.5) * 2000-150;
+                    mesh.rotation.x = Math.random() * 2 * Math.PI;
+                    mesh.rotation.y = Math.random() * 2 * Math.PI;
+                    mesh.rotation.z = Math.random() * 2 * Math.PI;
+                    // グループに格納する
+                    group.add(mesh);
+            }
+
+                const ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
+                scene.add(ambientLight);
+
+                var Light = new THREE.DirectionalLight(0xffffff,0.5);
+                Light.position.set(1000, 1000, 700);
+                scene.add(Light);
+
+                var update = function(){
+                    group.rotateY(0.01);
+                    renderer.render(scene, camera);
+                    requestAnimationFrame(tick);
+                }
+                update();
+            }
+            window.addEventListener('DOMContentLoaded',init);
+        </script>
+    </body>
+</html>
