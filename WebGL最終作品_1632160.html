@@ -32,6 +32,7 @@
                 const sphereGeometry = new THREE.SphereGeometry( 150, 32, 32 ); 
                 const textureLoader = new THREE.TextureLoader();
                 const erathtexture = textureLoader.load("earth.png");
+                erathtexture.minFilter = THREE.LinearFilter
                 const sphereMaterial = new THREE. MeshPhongMaterial();
                 sphereMaterial.map = erathtexture;
                 const sphere = new THREE.Mesh( sphereGeometry, sphereMaterial );
