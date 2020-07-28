@@ -18,8 +18,8 @@
                 document.body.appendChild(renderer.domElement);
 
                 var scene = new THREE.Scene();
-                //フォグは白で
-                scene.fog = new THREE.Fog(0xf9f9f9, 800, 2000);
+                //フォグ
+                scene.fog = new THREE.Fog(0x000000, 800, 2000);
 
                 var camera = new THREE.PerspectiveCamera(45,960/540);
                 camera.position.set(0, 0, 1000);
