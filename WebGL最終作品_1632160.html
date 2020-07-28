@@ -9,7 +9,8 @@
 
     <body>
         <script>
-            var init = function(){
+            window.addEventListener('load', init);
+            function init(){
                 
                 const width = 960
                 const height = 540
@@ -45,15 +46,15 @@
 
                 for (let i = 0; i < 1000; i++) {
                     const mesh = new THREE.Mesh(geometry, material);
-                    mesh.position.x = (Math.random() - 0.5) * 2000-150;
-                    mesh.position.y = (Math.random() - 0.5) * 2000-150;
-                    mesh.position.z = (Math.random() - 0.5) * 2000-150;
+                    mesh.position.x = (Math.random() - 0.5) * 2000;
+                    mesh.position.y = (Math.random() - 0.5) * 2000;
+                    mesh.position.z = (Math.random() - 0.5) * 2000;
                     mesh.rotation.x = Math.random() * 2 * Math.PI;
                     mesh.rotation.y = Math.random() * 2 * Math.PI;
                     mesh.rotation.z = Math.random() * 2 * Math.PI;
                     // グループに格納する
                     group.add(mesh);
-            }
+                }
 
                 const ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
                 scene.add(ambientLight);
@@ -69,7 +70,6 @@
                 }
                 update();
             }
-            window.addEventListener('DOMContentLoaded',init);
         </script>
     </body>
 </html>
