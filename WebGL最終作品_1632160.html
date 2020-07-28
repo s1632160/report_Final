@@ -16,7 +16,9 @@
                 const width = 960;
                 const height = 540;
                 
-                const renderer = new THREE.WebGLRenderer();
+                const renderer = new THREE.WebGLRenderer({
+                    canvas: document.querySelector('#myCanvas')
+                });
                 renderer.setSize(width, height);
 
                 const scene = new THREE.Scene();
@@ -32,7 +34,6 @@
                 const sphereGeometry = new THREE.SphereGeometry( 150, 32, 32 ); 
                 const textureLoader = new THREE.TextureLoader();
                 const erathtexture = textureLoader.load("earth.png");
-                erathtexture.minFilter = THREE.LinearFilter
                 const sphereMaterial = new THREE. MeshPhongMaterial();
                 sphereMaterial.map = erathtexture;
                 const sphere = new THREE.Mesh( sphereGeometry, sphereMaterial );
@@ -44,7 +45,7 @@
                 const geometry = new THREE.BoxGeometry(50, 50, 50);
                 const material = new THREE.MeshStandardMaterial({color: 0xff0000});
 
-                for (let i = 0; i < 200; i++) {
+                for (let i = 0; i < 100; i++) {
                     const mesh = new THREE.Mesh(geometry, material);
                     mesh.position.x = (Math.random() - 0.5) * 2000;
                     mesh.position.y = (Math.random() - 0.5) * 2000;
